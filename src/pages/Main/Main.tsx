@@ -36,10 +36,10 @@ const Main = () => {
   }, [fetchNews]);
   return (
     <main className="main">
-      {news.length > 0 && (
+      {!error && news.length > 0 && (
         <BannerWithSkeleton isLoading={loading} item={news[0]} />
       )}
-      {news.length > 0 && (
+      {!error && news.length > 0 && (
         <section className={styles.news}>
           <Pagination
             totalPages={totalPages}

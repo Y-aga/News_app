@@ -12,7 +12,7 @@ const Skeleton: FC<SkeletonProps> = ({ count = 1, type }) => {
       {count > 1 ? (
         <div className={styles.newsList}>
           {[...Array(count)].map((_, index) => (
-            <li key={index} className={styles.newsItem}></li>
+            <li key={index} className={styles[type]}></li>
           ))}
         </div>
       ) : (
