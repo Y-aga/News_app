@@ -1,0 +1,10 @@
+.newsList {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.newsItem {
+    display: flex;
+    column-gap: 12px;
+}

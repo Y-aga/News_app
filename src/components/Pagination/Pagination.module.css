@@ -1,0 +1,22 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.pages {
+    display: flex;
+    gap: 9px;
+}
+.btn_pageCurrent {
+    font-weight: 800;
+    font-size: 18px;
+}
+.btn {
+    border: none;
+    background-color: #242424;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}

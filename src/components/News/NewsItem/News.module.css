@@ -1,0 +1,17 @@
+.img {
+    width: 80px;
+    height: 80px;
+    background-color: #6C7072;
+    background-position: center;
+    background-size: cover;
+    flex-shrink: 0;
+}
+.title {
+    font-size: 18px;
+    font-weight: 500;
+}
+.timeAuthor {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(157, 157, 158);
+}

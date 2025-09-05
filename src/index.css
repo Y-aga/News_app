@@ -1,0 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+body {
+  color: aliceblue;
+  font-family: sans-serif;
+  background-color: #242424;
+}
+.container {
+  max-width: 1800px;
+  padding: 20px 30px;
+}
