@@ -1,5 +1,4 @@
 import axios from 'axios';
-const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export type Options = {
@@ -31,16 +30,12 @@ export type Article = {
 };
 export const apiGetnews = async (options: Options): Promise<News> => {
   try {
-    const response = await axios.get<News>(
-      `${BASE_URL}/top-headlines?country=us`,
-      {
-        params: {
-          apiKey: API_KEY,
-          pageSize: 10,
-          ...options,
-        },
-      }
-    );
+    const response = await axios.get<News>(`${BASE_URL}/news/page=1`, {
+      params: {
+        pageSize: 10,
+        ...options,
+      },
+    });
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
