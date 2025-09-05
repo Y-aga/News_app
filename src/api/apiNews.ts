@@ -30,7 +30,7 @@ export type Article = {
 };
 export const apiGetnews = async (options: Options): Promise<News> => {
   try {
-    const response = await axios.get<News>(`${BASE_URL}/news?page=1`, {
+    const response = await axios.get<News>(`${BASE_URL}/news?`, {
       params: {
         pageSize: 10,
         ...options,
