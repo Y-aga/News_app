@@ -4,6 +4,9 @@ import styles from './Main.module.css';
 import BannerWithSkeleton from '../../components/Banner/Banner';
 import NewsListWSkeleton from '../../components/News/NewsList/NewsList';
 import Pagination from '../../components/Pagination/Pagination';
+import Category, {
+  type CategoryType,
+} from '../../components/Category/Category';
 
 const Main = () => {
   const [error, setError] = useState<string | null>(null);
@@ -11,11 +14,15 @@ const Main = () => {
   const [news, setNews] = useState<Article[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [category, setCategory] = useState<CategoryType>('All');
 
   const fetchNews = useCallback(async () => {
     setLoading(true);
     try {
-      const news = await apiGetnews({ page: currentPage });
+      const news = await apiGetnews({
+        page: currentPage,
+        category: category === 'All' ? undefined : category,
+      });
       if (news.totalResults !== totalPages) {
         setTotalPages(news.totalResults);
       }
@@ -29,13 +36,14 @@ const Main = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, totalPages]);
+  }, [currentPage, totalPages, category]);
 
   useEffect(() => {
     fetchNews();
   }, [fetchNews]);
   return (
     <main className="main">
+      <Category currentCategory={category} setCategory={setCategory} />
       {!error && news.length > 0 && (
         <BannerWithSkeleton isLoading={loading} item={news[0]} />
       )}

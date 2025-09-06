@@ -1,0 +1,31 @@
+.category {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.items {
+    display: flex;
+    gap: 12px;    
+}
+.btn {
+    border: none;
+    border-radius: 20px;
+    background-color: #242424;
+    color: white;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn_arrow {
+    color: rgb(179, 129, 226);
+}
+.btn_current {
+    background-color: rgb(179, 129, 226);
+}
+::-webkit-scrollbar {
+    display: none;
+} 
