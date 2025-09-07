@@ -5,16 +5,16 @@ import { timeAgo } from '../../helpers/timeAgo';
 import { withSkeleton } from '../../helpers/hooks/withSkeleton';
 
 type Props = {
-  item: Article;
+  item: Article | undefined;
 };
 
 const Banner = ({ item }: Props) => {
   return (
     <section className={styles.banner}>
-      <ImageBanner img={item.urlToImage} />
-      <h2 className={styles.title}>{item.title}</h2>
+      <ImageBanner img={item?.urlToImage} />
+      <h2 className={styles.title}>{item?.title}</h2>
       <p className={styles.timeAuthor}>
-        {timeAgo(item.publishedAt)} &bull; by {item.author}
+        {timeAgo(item?.publishedAt)} &bull; by {item?.author}
       </p>
     </section>
   );

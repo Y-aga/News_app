@@ -5,12 +5,12 @@ import NewsItem from '../NewsItem/NewsItem';
 import { withSkeleton } from '../../../helpers/hooks/withSkeleton';
 
 type Props = {
-  news: Article[];
+  news: Article[] | undefined;
 };
 const NewsList: FC<Props> = ({ news }) => {
   return (
     <div className={styles.newsList}>
-      {news.map((item, index) => (
+      {news?.map((item, index) => (
         <li key={index} className={styles.newsItem}>
           <NewsItem newsItem={item} />
         </li>
