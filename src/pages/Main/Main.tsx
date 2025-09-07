@@ -63,6 +63,14 @@ const Main = () => {
           <NewsListWSkeleton isLoading={loading} news={news} />
         </section>
       )}
+      {!error && news.length <= 0 && (
+        <div className={styles.emptyNewsMessage}>
+          <h2 className={styles.message}>
+            Unfortunately there is no one news, you kan try change category or
+            Searching parametre
+          </h2>
+        </div>
+      )}
     </main>
   );
 };

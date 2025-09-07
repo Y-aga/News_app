@@ -3,3 +3,11 @@
     flex-direction: column;
     gap: 16px;
 }
+.emptyNewsMessage {
+    margin-top: 40px;
+    text-align: center;
+}
+.message {
+    color: #bebbbb;
+    font-size: 18px;
+}
