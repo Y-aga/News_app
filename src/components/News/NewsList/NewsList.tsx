@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import type { Article } from '../../../api/apiNews';
 import styles from './NewsList.module.css';
 import NewsItem from '../NewsItem/NewsItem';
-import { withSkeleton } from '../../../helpers/hooks/withSkeleton';
+import { withSkeleton } from '../../../helpers/hoks/withSkeleton';
 
 type Props = {
   news: Article[];

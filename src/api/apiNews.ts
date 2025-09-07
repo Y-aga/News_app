@@ -9,7 +9,7 @@ export type Options = {
   pageSize?: number;
   page?: number;
 };
-type News = {
+export type News = {
   status: string;
   totalResults: number;
   articles: Article[];

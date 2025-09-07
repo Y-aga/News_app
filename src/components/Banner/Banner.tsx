@@ -2,7 +2,7 @@ import styles from './Banner.module.css';
 import type { Article } from '../../api/apiNews';
 import ImageBanner from '../Image/Image';
 import { timeAgo } from '../../helpers/timeAgo';
-import { withSkeleton } from '../../helpers/hooks/withSkeleton';
+import { withSkeleton } from '../../helpers/hoks/withSkeleton';
 
 type Props = {
   item: Article;
