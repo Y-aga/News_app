@@ -7,6 +7,8 @@ import Pagination from '../../components/Pagination/Pagination';
 import Category, {
   type CategoryType,
 } from '../../components/Category/Category';
+import Search from '../../components/Search/Search';
+import { useDebounce } from '../../helpers/hooks/useDebounce';
 
 const Main = () => {
   const [error, setError] = useState<string | null>(null);
@@ -15,13 +17,16 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [category, setCategory] = useState<CategoryType>('All');
+  const [searchKw, setSearchKw] = useState('');
 
+  const debouncedKw = useDebounce<string>(searchKw, 1500);
   const fetchNews = useCallback(async () => {
     setLoading(true);
     try {
       const news = await apiGetnews({
         page: currentPage,
         category: category === 'All' ? undefined : category,
+        q: debouncedKw,
       });
       if (news.totalResults !== totalPages) {
         setTotalPages(news.totalResults);
@@ -36,14 +41,15 @@ const Main = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, totalPages, category]);
+  }, [currentPage, totalPages, category, debouncedKw]);
 
   useEffect(() => {
     fetchNews();
   }, [fetchNews]);
   return (
-    <main className="main">
+    <main className={styles.news}>
       <Category currentCategory={category} setCategory={setCategory} />
+      <Search searchKw={searchKw} setSearchKw={setSearchKw} />
       {!error && news.length > 0 && (
         <BannerWithSkeleton isLoading={loading} item={news[0]} />
       )}

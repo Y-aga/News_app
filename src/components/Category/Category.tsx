@@ -26,6 +26,7 @@ const Category = ({ currentCategory, setCategory }: Props) => {
       <div className={styles.items}>
         {AVAlIBLE_CATEGORIES.map((category) => (
           <button
+            key={category}
             onClick={() => {
               changeCategory(category);
             }}
