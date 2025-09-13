@@ -9,10 +9,13 @@ type Props = {
 const NewsItem: FC<Props> = ({ newsItem }) => {
   return (
     <>
-      <div
+      <a
+        href={newsItem.url}
+        target="_blanck"
+        rel="noopener noreferrer"
         className={styles.img}
         style={{ backgroundImage: `url(${newsItem.urlToImage})` }}
-      ></div>
+      ></a>
       <div className={styles.info}>
         <h2 className={styles.title}>{newsItem.title}</h2>
         <p className={styles.timeAuthor}>

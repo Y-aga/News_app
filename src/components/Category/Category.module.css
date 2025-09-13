@@ -1,15 +1,10 @@
-.category {
+.items {
     display: flex;
-    align-items: center;
     gap: 12px;
     overflow-x: auto;
     scrollbar-width: none;
     white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
-.items {
-    display: flex;
-    gap: 12px;    
+    -webkit-overflow-scrolling: touch; 
 }
 .btn {
     border: none;
@@ -20,12 +15,10 @@
     cursor: pointer;
     font-size: 18px;
 }
-.btn_arrow {
-    color: rgb(179, 129, 226);
+.btn:hover {
+    background-color: rgb(155, 155, 155);
+    transition:  ease-in-out 0.4s;   
 }
 .btn_current {
     background-color: rgb(179, 129, 226);
 }
-::-webkit-scrollbar {
-    display: none;
-} 

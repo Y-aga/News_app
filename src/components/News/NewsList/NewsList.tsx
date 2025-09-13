@@ -19,5 +19,5 @@ const NewsList: FC<Props> = ({ news }) => {
   );
 };
 
-const NewsWSkeleton = withSkeleton<Props>(NewsList, 7, 'newsItem');
+const NewsWSkeleton = withSkeleton<Props>(NewsList, 4, 'newsItem');
 export default NewsWSkeleton;

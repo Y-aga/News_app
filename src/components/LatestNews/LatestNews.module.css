@@ -1,0 +1,32 @@
+.latestNews {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.title {
+    background-color: rgb(84, 78, 90);
+    box-shadow: 0 -4px 8px rgb(196, 196, 197);
+    border-radius: 20px;
+    padding-inline: 12px;
+}
+.news {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 560px){
+    .news {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .title {
+        font-size: 20px;
+    }
+}
+@media (min-width: 1400px){
+    .news {
+        max-height: 900px;
+        overflow-y: auto;
+    scrollbar-width: none;
+    }
+}

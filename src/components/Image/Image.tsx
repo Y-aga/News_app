@@ -3,13 +3,19 @@ import { type FC } from 'react';
 import styles from './Image.module.css';
 type ImageProps = {
   img: string | undefined;
+  url: string | undefined;
 };
 
-const ImageBanner: FC<ImageProps> = ({ img }) => {
+const ImageBanner: FC<ImageProps> = ({ img, url }) => {
   return (
-    <div className={styles.wrapper}>
+    <a
+      href={url}
+      target="_blanck"
+      rel="noopener noreferrer"
+      className={styles.wrapper}
+    >
       {img ? <img src={img} className={styles.img} /> : null}
-    </div>
+    </a>
   );
 };
 

@@ -17,6 +17,7 @@ export function useFetch(
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsloading(true);
         const news = await fetchFunction(options);
         setTotalPages(news.totalResults);
         setNews(news.articles);
