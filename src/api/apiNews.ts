@@ -15,7 +15,7 @@ export type News = {
   articles: Article[];
 };
 type ArticleSource = {
-  id: string | null; // id может быть null, если отсутствует
+  id: string | null;
   name: string;
 };
 export type Article = {
@@ -32,7 +32,25 @@ export const apiGetnews = async (options: Options): Promise<News> => {
   try {
     const response = await axios.get<News>(`${BASE_URL}/news?`, {
       params: {
-        pageSize: 10,
+        pageSize: 7,
+        ...options,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Произошла неизвестная ошибка');
+    }
+  }
+};
+export const getLatestNews = async (options: Options) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/latest`, {
+      params: {
         ...options,
       },
     });

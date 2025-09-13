@@ -10,13 +10,13 @@ type Props = {
 
 const Banner = ({ item }: Props) => {
   return (
-    <section className={styles.banner}>
-      <ImageBanner img={item.urlToImage} />
+    <div className={styles.banner}>
+      <ImageBanner img={item.urlToImage} url={item.url} />
       <h2 className={styles.title}>{item.title}</h2>
       <p className={styles.timeAuthor}>
         {timeAgo(item.publishedAt)} &bull; by {item.author}
       </p>
-    </section>
+    </div>
   );
 };
 
