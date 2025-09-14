@@ -1,69 +1,44 @@
-# React + TypeScript + Vite
+🌐 UpdateHub News — Современное Новостное Веб-Приложение
+Современное и высокопроизводительное веб-приложение-агрегатор новостей, построенное на актуальном стеке React. Приложение получает и отображает последние новости из различных источников по всему миру с помощью NewsAPI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Стек технологий
+Фронтенд (Клиентская часть)
+Фреймворк: React 18
 
-Currently, two official plugins are available:
+Сборка: Vite (для быстрой разработки и сборки)
+Язык: TypeScript
+Стилизация: CSS Modules (для модульных и изолированных стилей)
+Качество кода: ESLint + Prettier (для единого стиля и чистого кода)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Бэкенд (Сервер)
+Среда: Node.js
+Фреймворк: Express.js
+Деплой: Railway
+Основная задача: Выступает в роли API-моста для обхода CORS-политики и безопасного запроса данных из NewsAPI.
 
-## Expanding the ESLint configuration
+Возможности
+Свежие новости: Просмотр главных новостей из широкого спектра источников и категорий.
+Поиск: Поиск новостных статей по конкретным темам.
+Чистый интерфейс: Современный, отзывчивый и удобный интерфейс, написанный на CSS Modules.
+Типизация: Весь проект написан на TypeScript для лучшего опыта разработки и меньшего количества ошибок.
+Высокая производительность: Сборка на Vite обеспечивает очень быструю перезагрузку (HMR) и оптимизированные билды.
+Безопасные запросы: Все запросы к NewsAPI проксируются через кастомный Node.js-сервер для избежания CORS-ошибок и защиты API-ключа.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Архитектура и как это работает
+Проект использует клиент-серверную архитектуру для обхода ограничений безопасности браузера:
+Фронтенд (Задеплоен на Vercel):
+React-приложение отправляет API-запросы (например, для получения заголовков или поиска) на мой кастомный сервер, а не напрямую в NewsAPI.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Сервер (Задеплоен на Railway):
+Express.js-сервер выступает в роли безопасного прокси-моста.
+Он получает запросы от фронтенда, добавляет необходимый API-ключ и перенаправляет их на newsapi.org.
+Затем он получает ответ от NewsAPI и отправляет его обратно клиенту, эффективно решая проблему CORS.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Источник данных:
+Все новости предоставляются сервисом NewsAPI.org.
+Такая архитектура гарантирует безопасность (фронтенд никогда не раскрывает API-ключ) и совместимость.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Предварительные требования
+Node.js (v18 или выше)
+React 16+
+npm, yarn или pnpm
